@@ -7,18 +7,25 @@ namespace hakaton.Controllers
 {
     public class HomeController : Controller
     {
-        static Info Prog;
-
+        static List<Info> Prog;
+        static ProgInfo pg;
         public HomeController()
         {
-            ProgInfo pg = new ProgInfo();
-            Prog = pg.Info;
+            pg = new ProgInfo();
+            Prog = pg.listInfo;
         }
 
         public ActionResult Index()
         {
             return View();
         }
+
+        public ActionResult History()
+        {
+            ViewBag.listOfUsersInfo = pg.listInfo;
+            return View(pg);
+        }
+
 
         public ActionResult Try()
         {

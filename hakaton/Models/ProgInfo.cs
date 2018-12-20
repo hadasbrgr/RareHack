@@ -11,29 +11,36 @@ namespace hakaton.Models
     {
         [Required]
         [DataType(DataType.Text)]
-        [Display(Name = "Info")]
-        public Info Info { get; set; }
+        [Display(Name = "ListInfo")]
+        public List<Info> listInfo { get; set; }
 
         public ProgInfo()
         {
-            Info = getInfo();
+            listInfo = getInfo();
         }
 
-        static Info getInfo()
+        public static List<Info> getInfo()
         {
             StreamReader reader = new StreamReader(System.Web.HttpContext.Current.Server.MapPath("~/App_Data/ProgInformation.txt"));
-            string[] first = reader.ReadLine().Split(';');
-            Info st = new Info()
+            List<Info> infoOfUsers = new List<Info>();
+            string first = reader.ReadLine();
+            while (first!=null)
             {
-                Cent = int.Parse(first[0]),
-                //Cent = ParserError..ToInt32(first[0]),
-                CurrentParticipant = int.Parse(first[1]),
-                ParticipantNum = int.Parse(first[2]),
-                PStatic = int.Parse(first[3]),
-                VotersNum = int.Parse(first[4])
-            };
+                string[] splittedInfo = first.Split(';');
+                Info st = new Info()
+                {
+                    ID = int.Parse(splittedInfo[0]),
+                    firstName = splittedInfo[1],
+                    lastName = splittedInfo[2],
+                    gender = splittedInfo[3],
+                    birthDate = splittedInfo[4]
+                    
+                };
+                infoOfUsers.Add(st);
+                first = reader.ReadLine();
+            }
             reader.Close();
-            return st;
+            return infoOfUsers;
         }
     }
 }
