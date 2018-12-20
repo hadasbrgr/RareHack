@@ -1,1 +1,2 @@
 ﻿2;sapir;yamin;female;13.6;
+31;hadas;begrer;Female;2018-12-03;

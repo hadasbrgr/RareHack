@@ -3,22 +3,29 @@
 @{
     ViewBag.Title = "Try";
 }
-
+@*<style>
+    textarea {
+  width: 600px;
+  height: 150px;
+}
+</style>*@
 <h2>Diagnostic</h2>
 
 <div>
-    First name: <input type="text" name="FirstName" id="FirstName"><br><br>
-    Last name: <input type="text" name="LastName"  id="LastName"><br><br>
+   @* First name: <input type="text" name="FirstName" id="FirstName"><br><br>
+    Last name: <input type="text" name="LastName"  id="LastName"><br><br>*@
     Id: <input type="text" name="Id" id="Id"><br><br>
-    Gender:    <input type="radio" name="Gender" id="Gender1" value="Male" style="height:20px; width:20px;">Male <input type="radio" name="Gender" id="Gender2" value="Female" style="height:20px; width:20px;">Female<br><br />
+   @* Gender:    <input type="radio" name="Gender" id="Gender1" value="Male" style="height:20px; width:20px;">Male <input type="radio" name="Gender" id="Gender2" value="Female" style="height:20px; width:20px;">Female<br><br />
     Birthdate:  <input type="date" name="Date" id="Date">
     <br /><br>
     Did you have historical family desese1?  <input type="checkbox" name="option1" value="Yes" id="option1a"> Yes <input type="checkbox" name="option1" value="No" id="option1b">No<br><br>
     Did you have historical family desese2?   <input type="checkbox" name="option2" value="Yes" id="option2a"> Yes <input type="checkbox" name="option2" value="No" id="option2b">No<br><br>
     Did you have historical family desese3?   <input type="checkbox" name="option3" value="Yes" id="option3a"> Yes <input type="checkbox" name="option3" value="No" id="option3b">No<br><br>
-    Did you have historical family desese4?   <input type="checkbox" name="option4" value="Yes" id="option4a"> Yes <input type="checkbox" name="option4" value="No" id="option4b">No<br><br>
+    Did you have historical family desese4?   <input type="checkbox" name="option4" value="Yes" id="option4a"> Yes <input type="checkbox" name="option4" value="No" id="option4b">No<br><br>*@
 </div>
-
+<textarea   rows="10" cols="50" name="msg" id="msg" placeholder="click and write here to see how it works!">
+</textarea>
+<br /><br />
 @*<div class="form-group">
     <label for="sel1">Select list:</label>
     <select class="form-control" name="disease" id="disease">
@@ -29,14 +36,34 @@
     </select>
 </div>*@
 
-<button type="button" style="font-size: 20px;  width: 300px" class="btn btn-primary center-block" onclick="save()">Save</button>
+<button type="button" style="font-size: 20px;  width: 300px" class="btn btn-primary center-block" onclick="save1()">Save</button>
 
 <br /><br />
 
 <script>
+    function save1() {
+        var IdVal = $("#Id").val();
+        var textVar = $('textarea#msg').val();
+        $.ajax({
+            method: "POST",
+            url: "/Home/Sol2",
+            data: {
+                Id: IdVal,
+                text1: textVar
+            },
+            success: function (data) {
+                window.location.replace("/Home/Index"); //in success - go to another page
+            },
+            error: function (data) {
+                alert("problem");
+            }
+
+        });
+    }
+
     function save(){
 
-        var FirstNameVal = $("#FirstName").val();
+       /* var FirstNameVal = $("#FirstName").val();
         var LastNameVal = $("#LastName").val();
         var IdVal = $("#Id").val();
         var GenderVal = $("input[name='Gender']:checked").val();
@@ -44,7 +71,7 @@
         var Qouest1 = $("input[name='option1']:checked").val();
         var Qouest2 = $("input[name='option2']:checked").val();
         var Qouest3 = $("input[name='option3']:checked").val();
-        var Qouest4 = $("input[name='option4']:checked").val();
+        var Qouest4 = $("input[name='option4']:checked").val();*/
 
         $.ajax({
             method: "POST",
