@@ -1,0 +1,77 @@
+﻿@model hakaton.Models.ProgInfo
+@{
+    ViewBag.Title = "History";
+}
+
+<h2>Information Of The User</h2>
+
+<h2>History</h2>
+
+
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>History Table:</h2>
+    <table>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.listInfo[0].ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.listInfo[0].firstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.listInfo[0].lastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.listInfo[0].gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.listInfo[0].birthDate)
+            </th>
+        </tr> 
+
+            @foreach (var item in Model.listInfo)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.firstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.lastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.birthDate)
+                    </td>
+                    
+                </tr>
+            }
+    </table>
+
+</body>

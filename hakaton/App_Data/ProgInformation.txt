@@ -1,1 +1,1 @@
-﻿2;2;2;2;2
+﻿2;sapir;yamin;female;13.6

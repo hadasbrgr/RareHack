@@ -10,37 +10,28 @@ namespace hakaton.Models
     {
         [Required]
         [DataType(DataType.Text)]
-        [Display(Name = "Cent")]
-        public int Cent { get; set; }
+        [Display(Name = "ID")]
+        public int ID { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
-        [Display(Name = "ParticipantNum")]
-        public int ParticipantNum { get; set; }
+        [Display(Name = "First Name")]
+        public string firstName { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
-        [Display(Name = "VotersNum")]
-        public int VotersNum { get; set; }
+        [Display(Name = "Last Name")]
+        public string lastName { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
-        [Display(Name = "CurrentParticipant")]
-        public int CurrentParticipant { get; set; }
+        [Display(Name = "Gender")]
+        public string gender { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
-        [Display(Name = "PStatic")]
-        public double PStatic { get; set; }
+        [Display(Name = "Birth Date")]
+        public string birthDate { get; set; }
 
-        [Required]
-        [DataType(DataType.Date)]
-        [Display(Name = "table")]
-        public string[,] Table { get; set; }
-
-        [Required]
-        [DataType(DataType.Date)]
-        [Display(Name = "GameNumber")]
-        public int GameNumber { get; set; }
     }
 }
