@@ -1,6 +1,7 @@
 ﻿using hakaton.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Web.Mvc;
 
 namespace hakaton.Controllers
@@ -37,9 +38,20 @@ namespace hakaton.Controllers
         [HttpPost]
         public ActionResult Sol(String FirstName, String LastName, String Id, String Gender, String Date, String Q1, String Q2, String Q3, String Q4)
         {
-            Session["abstain_help"] = "avoid";
-            Session["voters"] = 0;
-            exportInfo();
+            string mydocpath = Id + ";" + FirstName + ";" + LastName + ";" + Gender + ";" + Date + ";";
+            StreamWriter sw = new StreamWriter((System.IO.File.Open(System.Web.HttpContext.Current.Server.MapPath("~/App_Data/ProgInformation.txt"), System.IO.FileMode.Append)));
+            sw.WriteLine(mydocpath);
+            sw.Close();
+            pg.listInfo.Add(new Info() { ID = Convert.ToInt32(Id), firstName = FirstName, lastName = LastName, gender = Gender, birthDate = Date });
+            return Json(true);
+        }
+
+        public ActionResult Sol2(String Id, String text1)
+        {
+            string mydocpath = Id + ";" + text1+";";
+            StreamWriter sw = new StreamWriter((System.IO.File.Open(System.Web.HttpContext.Current.Server.MapPath("~/App_Data/freeText.txt"), System.IO.FileMode.Append)));
+            sw.WriteLine(mydocpath);
+            sw.Close();
             return Json(true);
         }
 
