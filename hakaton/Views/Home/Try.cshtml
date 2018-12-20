@@ -7,19 +7,20 @@
 <h2>Diagnostic</h2>
 
 <div>
-    First name: <input type="text" name="FirstName" ><br>
-    Last name: <input type="text" name="LastName"><br>
-    Id: <input type="text" name="LastName"><br>
-    Gender: <label class="radio-inline"><input type="radio" name="optradio" checked>Male</label>
-<label class="radio-inline"><input type="radio" name="optradio">Female</label>
-    Age: <select id="age" name="age" style="margin-left:1.5%;height:5%;font-size:15px;width: 300px;font-weight: normal" class="instruction-txt">
-    @foreach (string item in ViewBag.age)
-            {
-        <option value="@item">@item</option>
-    }
-</select><br />
-    Did you have historical family desese? <input type="checkbox" name="vehicle" value="Yes"> Yes <input type="checkbox" name="vehicle" value="No">No<br>
+    First name: <input type="text" name="FirstName"><br><br>
+    Last name: <input type="text" name="LastName"><br><br>
+    Id: <input type="text" name="LastName"><br><br>
+    Gender:     <label class="radio-inline"><input type="radio" name="optradio" checked>Male</label>
+    <label class="radio-inline"><input type="radio" name="optradio">Female</label><br><br>
+    Date:  <input type="date" name="bday">
+    <br /><br>
+    Did you have historical family desese?  <input type="checkbox" name="vehicle" value="Yes"> Yes <input type="checkbox" name="vehicle" value="No">No<br><br>
+    Did you have historical family desese?   <input type="checkbox" name="vehicle" value="Yes"> Yes <input type="checkbox" name="vehicle" value="No">No<br><br>
+    Did you have historical family desese?   <input type="checkbox" name="vehicle" value="Yes"> Yes <input type="checkbox" name="vehicle" value="No">No<br><br>
+    Did you have historical family desese?   <input type="checkbox" name="vehicle" value="Yes"> Yes <input type="checkbox" name="vehicle" value="No">No<br><br>
+
 </div>
+
 <div class="form-group">
     <label for="sel1">Select list:</label>
     <select class="form-control" id="sel1">
@@ -30,38 +31,39 @@
     </select>
 </div>
 
-<div>
-    <label class="radio-inline"><input type="radio" name="optradio" checked>Option 1</label>
-    <label class="radio-inline"><input type="radio" name="optradio">Option 2</label>
-    <label class="radio-inline"><input type="radio" name="optradio">Option 3</label>
-</div>
+@*@<div>
+        <label class="radio-inline"><input type="radio" name="optradio" checked>Option 1</label>
+        <label class="radio-inline"><input type="radio" name="optradio">Option 2</label>
+        <label class="radio-inline"><input type="radio" name="optradio">Option 3</label>
+    </div>
 
-<div class="form-group">
-    <label for="usr">Name:</label>
-    <input type="text" class="form-control" id="usr">
-</div>
-<div class="form-group">
-    <label for="pwd">Password:</label>
-    <input type="password" class="form-control" id="pwd">
-</div>
+    <div class="form-group">
+        <label for="usr">Name:</label>
+        <input type="text" class="form-control" id="usr">
+    </div>
+    <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd">
+    </div>
 
-<select id="age" name="age" style="margin-left:1.5%;height:5%;font-size:25px;width: 300px;font-weight: normal" class="instruction-txt">
-    @foreach (string item in ViewBag.age)
-            {
-        <option value="@item">@item</option>
-    }
-</select>
-<br /><br />
+    <select id="age" name="age" style="margin-left:1.5%;height:5%;font-size:25px;width: 300px;font-weight: normal" class="instruction-txt">
+        @foreach (string item in ViewBag.age)
+                {
+            <option value="@item">@item</option>
+        }
+    </select>
+    <br /><br />
 
-<div class="form-group" style="padding-left:1.5%; font-size: 170%;font-weight: bold">
-    Gender
-</div>
-<select id="gender" name="gender" style="margin-left:1.5%;height:5%;font-size:25px;width: 300px;font-weight: normal" class="instruction-txt">
-    @foreach (string item in ViewBag.gender)
-            {
-        <option value="@item">@item</option>
-    }
-</select>
+    <div class="form-group" style="padding-left:1.5%; font-size: 170%;font-weight: bold">
+        Gender
+    </div>
+    <select id="gender" name="gender" style="margin-left:1.5%;height:5%;font-size:25px;width: 300px;font-weight: normal" class="instruction-txt">
+        @foreach (string item in ViewBag.gender)
+                {
+            <option value="@item">@item</option>
+        }
+    </select>*@
+<button type="button" style="font-size: 20px; width: 300px" class="btn btn-primary center-block" onclick='">Save</button>
 
 <br /><br />
 
