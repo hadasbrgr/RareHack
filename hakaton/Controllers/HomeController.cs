@@ -22,13 +22,13 @@ namespace hakaton.Controllers
 
         public ActionResult Try()
         {
-            ViewBag.age = new List<string> { "5", "6" };
+            ViewBag.age =//model new List<string> { "5", "6" };
             ViewBag.gender= new List<string> { "Male", "Female" };
             return View();
         }
 
         [HttpPost]
-        public ActionResult Sol(String gender, String age)
+        public ActionResult Sol(String FirstName, String LastName, String Id, String Gender, String Date, String Q1, String Q2, String Q3, String Q4)
         {
             Session["abstain_help"] = "avoid";
             Session["voters"] = 0;

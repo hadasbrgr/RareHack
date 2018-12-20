@@ -7,80 +7,67 @@
 <h2>Diagnostic</h2>
 
 <div>
-    First name: <input type="text" name="FirstName"><br><br>
-    Last name: <input type="text" name="LastName"><br><br>
-    Id: <input type="text" name="LastName"><br><br>
-    Gender:     <label class="radio-inline"><input type="radio" name="optradio" checked>Male</label>
-    <label class="radio-inline"><input type="radio" name="optradio">Female</label><br><br>
-    Date:  <input type="date" name="bday">
+    First name: <input type="text" name="FirstName" id="FirstName"><br><br>
+    Last name: <input type="text" name="LastName"  id="LastName"><br><br>
+    Id: <input type="text" name="Id" id="Id"><br><br>
+    Gender:    <input type="radio" name="Gender" id="Gender1" value="Male" style="height:20px; width:20px;">Male <input type="radio" name="Gender" id="Gender2" value="Female" style="height:20px; width:20px;">Female<br><br />
+    Birthdate:  <input type="date" name="Date" id="Date">
     <br /><br>
-    Did you have historical family desese?  <input type="checkbox" name="vehicle" value="Yes"> Yes <input type="checkbox" name="vehicle" value="No">No<br><br>
-    Did you have historical family desese?   <input type="checkbox" name="vehicle" value="Yes"> Yes <input type="checkbox" name="vehicle" value="No">No<br><br>
-    Did you have historical family desese?   <input type="checkbox" name="vehicle" value="Yes"> Yes <input type="checkbox" name="vehicle" value="No">No<br><br>
-    Did you have historical family desese?   <input type="checkbox" name="vehicle" value="Yes"> Yes <input type="checkbox" name="vehicle" value="No">No<br><br>
-
+    Did you have historical family desese1?  <input type="checkbox" name="option1" value="Yes" id="option1a"> Yes <input type="checkbox" name="option1" value="No" id="option1b">No<br><br>
+    Did you have historical family desese2?   <input type="checkbox" name="option2" value="Yes" id="option2a"> Yes <input type="checkbox" name="option2" value="No" id="option2b">No<br><br>
+    Did you have historical family desese3?   <input type="checkbox" name="option3" value="Yes" id="option3a"> Yes <input type="checkbox" name="option3" value="No" id="option3b">No<br><br>
+    Did you have historical family desese4?   <input type="checkbox" name="option4" value="Yes" id="option4a"> Yes <input type="checkbox" name="option4" value="No" id="option4b">No<br><br>
 </div>
 
-<div class="form-group">
+@*<div class="form-group">
     <label for="sel1">Select list:</label>
-    <select class="form-control" id="sel1">
+    <select class="form-control" name="disease" id="disease">
         <option>Gaucher</option>
         <option>another</option>
         <option>More</option>
         <option>More..</option>
     </select>
-</div>
+</div>*@
 
-@*@<div>
-        <label class="radio-inline"><input type="radio" name="optradio" checked>Option 1</label>
-        <label class="radio-inline"><input type="radio" name="optradio">Option 2</label>
-        <label class="radio-inline"><input type="radio" name="optradio">Option 3</label>
-    </div>
-
-    <div class="form-group">
-        <label for="usr">Name:</label>
-        <input type="text" class="form-control" id="usr">
-    </div>
-    <div class="form-group">
-        <label for="pwd">Password:</label>
-        <input type="password" class="form-control" id="pwd">
-    </div>
-
-    <select id="age" name="age" style="margin-left:1.5%;height:5%;font-size:25px;width: 300px;font-weight: normal" class="instruction-txt">
-        @foreach (string item in ViewBag.age)
-                {
-            <option value="@item">@item</option>
-        }
-    </select>
-    <br /><br />
-
-    <div class="form-group" style="padding-left:1.5%; font-size: 170%;font-weight: bold">
-        Gender
-    </div>
-    <select id="gender" name="gender" style="margin-left:1.5%;height:5%;font-size:25px;width: 300px;font-weight: normal" class="instruction-txt">
-        @foreach (string item in ViewBag.gender)
-                {
-            <option value="@item">@item</option>
-        }
-    </select>*@
-<button type="button" style="font-size: 20px; width: 300px" class="btn btn-primary center-block" onclick='">Save</button>
+<button type="button" style="font-size: 20px;  width: 300px" class="btn btn-primary center-block" onclick="save()">Save</button>
 
 <br /><br />
 
 <script>
-    $.ajax({
-        method: "POST",
-        url: "/Home/Sol",
-        data: {
-            gender: $("#age").val(),
-            age: $("#gender").val()
-        },
-        success: function (data) {
-            window.location.replace("/Home/Gide"); //in success - go to another page
-        },
-        error: function (data) {
-            alert("problem");
-        }
+    function save(){
 
-    });
+        var FirstNameVal = $("#FirstName").val();
+        var LastNameVal = $("#LastName").val();
+        var IdVal = $("#Id").val();
+        var GenderVal = $("input[name='Gender']:checked").val();
+        var DateVal = document.getElementById("Date").value;
+        var Qouest1 = $("input[name='option1']:checked").val();
+        var Qouest2 = $("input[name='option2']:checked").val();
+        var Qouest3 = $("input[name='option3']:checked").val();
+        var Qouest4 = $("input[name='option4']:checked").val();
+
+        $.ajax({
+            method: "POST",
+            url: "/Home/Sol",
+            data: {
+                FirstName: FirstNameVal,
+                LastName: LastNameVal,
+                Id: IdVal,
+                Gender: GenderVal,
+                Date: DateVal,
+                Q1: Qouest1,
+                Q2: Qouest2,
+                Q3: Qouest3,
+                Q4: Qouest4,
+
+            },
+            success: function (data) {
+                window.location.replace("/Home/Index"); //in success - go to another page
+            },
+            error: function (data) {
+                alert("problem");
+            }
+
+        });
+    };
 </script>
